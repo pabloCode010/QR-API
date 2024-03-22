@@ -1,3 +1,4 @@
+const Boom = require('@hapi/boom');
 const qr = require("../qr/new");
 
 const contentType = {
@@ -18,13 +19,13 @@ const generate = async (req, res, next) => {
         light: `#${background_color}`,
       },
     };
-
+    
     const code = await qr.newCode(text, options);
 
     res.setHeader("Content-Type", contentType[type]);
     res.status(200).end(code);
   } catch (error) {
-    next(error);
+    next(Boom.internal("an unexpected error occurred"));
   }
 };
 
