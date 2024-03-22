@@ -1,0 +1,11 @@
+{
+  "name": "qr-api",
+  "version": "1.0.0",
+  "description": "API that generates custom QR codes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pabloCode010",
+  "license": "ISC"
+}
