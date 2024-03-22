@@ -1,3 +1,5 @@
+const qr = require("../qr/tools");
+
 const generate = async (req, res, next) => {
   try {
     const { text } = req.query;
