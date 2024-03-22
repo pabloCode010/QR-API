@@ -7,11 +7,12 @@ const contentType = {
 
 const generate = async (req, res, next) => {
   try {
-    const { text, type, background_color, color } = req.query;
+    const { text, type, background_color, color, width } = req.query;
 
     const options = {
       errorCorrectionLevel: "H",
-      type: type,
+      type,
+      width,
       color: {
         dark: `#${color}`,
         light: `#${background_color}`,
