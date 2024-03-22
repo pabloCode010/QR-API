@@ -1,10 +1,26 @@
-const qr = require("../qr/tools");
+const qr = require("../qr/new");
+
+const contentType = {
+  png: "image/png",
+  svg: "image/svg+xml",
+};
 
 const generate = async (req, res, next) => {
   try {
-    const { text } = req.query;
-    const code = await qr.toBuffer(text);
-    res.set("Content-Type", "image/png");
+    const { text, type } = req.query;
+
+    const options = {
+      errorCorrectionLevel: "H",
+      type: type,
+      color: {
+        dark: "#000",
+        light: "#fff",
+      },
+    };
+
+    const code = await qr.newCode(text, options);
+
+    res.setHeader("Content-Type", contentType[type]);
     res.status(200).end(code);
   } catch (error) {
     next(error);
